@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/index",
-    "test": "jest"
+    "test": "jest",
+    "seed:songs": "node src/seeds/songs.js",
+    "seed:albums": "node src/seeds/albums.js"
   },
   "jest": {
     "transform": {
