@@ -12,17 +12,15 @@ export const getAllAlbums = async (params) => {
 } 
 
 export const getAlbumById = async(params) => {
-    const {id} = params;
-
-    if(!id) {
+    if(!params) {
         throw new AppError('Invalid input - params id required', 400);
     }
 
-    const album = await Album.findById(id).populate('songs');
+    const album = await Album.findById(params).populate("songs");
 
     if(!album) {
         throw new AppError('Album not found', 404);
     }
 
-    return album
+    return album;
 }
