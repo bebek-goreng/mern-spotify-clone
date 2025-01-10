@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { useMusicStore } from "@/store/UseMusicStore";
+import { useMusicStore } from "@/store/useMusicStore";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import { Clock, Play } from "lucide-react";
 import { useEffect } from "react";
