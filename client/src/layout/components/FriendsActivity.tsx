@@ -2,16 +2,18 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useChatStore } from "@/store/useChatStore";
 import { useUser } from "@clerk/clerk-react";
-import { HeadphonesIcon, Users } from "lucide-react";
+import { HeadphonesIcon, Music, Users } from "lucide-react";
 import { useEffect } from "react";
 
 const FriendsActivity = () => {
-  const { users, isLoading, fetchUsers, error } = useChatStore();
+  const { users, fetchUsers } = useChatStore();
   const user = useUser();
 
   useEffect(() => {
     if (user) fetchUsers();
   }, []);
+
+  const isPlaying = false;
 
   return (
     <div className="h-full bg-zinc-900 rounded-lg flex flex-col">
@@ -45,7 +47,23 @@ const FriendsActivity = () => {
                     <span className="font-medium text-sm text-white">
                       {user.fullName}
                     </span>
+                    {isPlaying && (
+                      <Music className="size-3.5 text-emerald-400 shrink-0" />
+                    )}
                   </div>
+
+                  {isPlaying ? (
+                    <div className="mt-1">
+                      <div className="mt-1 text-sm text-white font-medium truncate">
+                        Cardigan
+                      </div>
+                      <div className="text-xs text-zinc-400 truncate">
+                        by Taylor Swift
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="mt-1 text-xs text-zinc-400">Idle</div>
+                  )}
                 </div>
               </div>
             </div>
