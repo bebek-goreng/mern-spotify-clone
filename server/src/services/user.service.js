@@ -4,9 +4,8 @@ import { Message } from '../models/message.model.js';
 
 
 export const getAllUser = async (params) => {
-    const { currentUserId } = params;
     const users = await User.find({
-        clerkId: { $ne: currentUserId }
+        clerkId: { $ne: params }
     });
 
     if (!users) {
@@ -21,12 +20,12 @@ export const getMessage = async (params) => {
 
     const messages = await Message.find({
         $or: [
-            {senderId: userId, receiverId: myId},
-            {senderId: myId, receiverId: userId}
+            { senderId: userId, receiverId: myId },
+            { senderId: myId, receiverId: userId }
         ]
     });
 
-    if(!messages) {
+    if (!messages) {
         throw new AppError('Dont have any message yet', 404);
     }
 
