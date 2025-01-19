@@ -20,6 +20,8 @@ export const useChatStore = create<ChatStore>((set) => ({
         } catch (error: any) {
             console.log(error);
             set({ error: error.response.data.message || "Failed to fetch users" });
+        } finally {
+            set({ isLoading: false })
         }
     }
 }));
