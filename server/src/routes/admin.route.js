@@ -1,7 +1,7 @@
 import express from 'express';
 import { createAlbumController, createSongController, deleteSongController } from '../controllers/admin.controller.js';
 import { protectedRoute, requireAdmin } from '../middlewares/auth.middleware.js';
-import { checkAdmin } from '../services/admin.service.js';
+import { checkAdmin } from '../controllers/admin.controller.js';
 
 export const adminRoute = express.Router();
 

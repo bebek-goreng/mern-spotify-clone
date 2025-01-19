@@ -1,3 +1,4 @@
+import { clerkClient } from "@clerk/express";
 import { createAlbum, createSong, deleteAlbum, deleteSong } from "../services/admin.service.js";
 
 export const createSongController = async (req, res, next) => {
@@ -63,5 +64,18 @@ export const deleteAlbumController = async (req, res, next) => {
         });
     } catch (error) {
         next(error);
+    }
+}
+
+export const checkAdmin = async (req, res, next) => {
+    try {
+        res.status(200).json({
+            admin: true
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(403).json({
+            message: "Check admin error - You dont have authorized"
+        })
     }
 }
