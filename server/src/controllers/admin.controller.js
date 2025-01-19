@@ -1,4 +1,3 @@
-import { clerkClient } from "@clerk/express";
 import { createAlbum, createSong, deleteAlbum, deleteSong } from "../services/admin.service.js";
 
 export const createSongController = async (req, res, next) => {
