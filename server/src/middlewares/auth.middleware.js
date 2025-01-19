@@ -20,7 +20,7 @@ export const requireAdmin = async (req, res, next) => {
         const isAdmin = process.env.ADMIN_EMAIL === currentUser.primaryEmailAddress?.emailAddress;
 
         if (!isAdmin) {
-            throw new AppError('Unautorized - role admin required', 403);
+            return res.status(403).json({ message: "Unauthorized - you must be an admin" });
         }
 
         next();

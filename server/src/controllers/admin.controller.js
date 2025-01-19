@@ -65,3 +65,16 @@ export const deleteAlbumController = async (req, res, next) => {
         next(error);
     }
 }
+
+export const checkAdmin = async (req, res, next) => {
+    try {
+        res.status(200).json({
+            admin: true
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(403).json({
+            message: "Check admin error - You dont have authorized"
+        })
+    }
+}
