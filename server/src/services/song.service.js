@@ -12,10 +12,9 @@ export const getAllSongs = async (params) => {
 }
 
 export const getFeaturedSongs = async (params) => {
-    const { size } = params;
     const song = await Song.aggregate([
         {
-            $sample: { size: size }
+            $sample: { size: +params }
         },
         {
             $project: {
@@ -32,11 +31,10 @@ export const getFeaturedSongs = async (params) => {
 }
 
 export const getMadeForYou = async (params) => {
-    const { size } = params;
 
     const songs = await Song.aggregate([
         {
-            $sample: { size: size || 4 },
+            $sample: { size: +params || 4 },
         },
         {
             $project: {
@@ -53,11 +51,10 @@ export const getMadeForYou = async (params) => {
 }
 
 export const getTrendingSongs = async (params) => {
-    const { size } = params;
 
     const songs = await Song.aggregate([
         {
-            $sample: { size: size || 4},
+            $sample: { size: +params || 4 },
         },
         {
             $project: {
