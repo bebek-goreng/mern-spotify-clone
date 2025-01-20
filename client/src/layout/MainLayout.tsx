@@ -6,6 +6,7 @@ import {
 import { Outlet } from "react-router-dom";
 import LeftSidebar from "./components/LeftSidebar";
 import FriendsActivity from "./components/FriendsActivity";
+import AudioPlayer from "./components/AudioPlayer";
 
 const MainLayout = () => {
   const isMobile = false;
@@ -15,7 +16,7 @@ const MainLayout = () => {
       <ResizablePanelGroup
         direction="horizontal"
         className="flex-1 flex h-full overflow-hidden p-2">
-        {/* left side bar */}
+        <AudioPlayer />
         <ResizablePanel
           defaultSize={20}
           minSize={isMobile ? 0 : 10}
@@ -25,14 +26,12 @@ const MainLayout = () => {
 
         <ResizableHandle className="w-2 bg-black rounded-lg transition-colors" />
 
-        {/* main content */}
         <ResizablePanel defaultSize={isMobile ? 80 : 60}>
           <Outlet />
         </ResizablePanel>
 
         <ResizableHandle className="w-2 bg-black rounded-lg transition-colors" />
 
-        {/* right sidebar */}
         <ResizablePanel defaultSize={20} maxSize={25} collapsedSize={0}>
           <FriendsActivity />
         </ResizablePanel>
