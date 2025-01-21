@@ -4,7 +4,7 @@ import { AppError } from '../utils/app.error.js';
 export const getAllSongs = async (params) => {
     const songs = await Song.find().sort(params);
 
-    if (songs) {
+    if (!songs) {
         throw new AppError('Internal server error - Failed to get all songs', 500);
     }
 

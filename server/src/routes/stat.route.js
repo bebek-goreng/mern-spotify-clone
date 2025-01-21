@@ -4,4 +4,4 @@ import { statController } from "../controllers/stat.controller.js";
 
 export const statRoute = express.Router();
 
-statRoute.get('/stat', protectedRoute, requireAdmin, statController);
+statRoute.get('/stats', protectedRoute, requireAdmin, statController);

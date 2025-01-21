@@ -25,7 +25,7 @@ export const requireAdmin = async (req, res, next) => {
 
         next();
     } catch (error) {
-        console.log(`Auth middleware admin error: ${error}`);
+        console.log(`Auth middleware admin error-  ${error}`);
         next(error);
     }
 } 
