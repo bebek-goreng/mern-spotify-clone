@@ -13,4 +13,4 @@ route.use('/api/auth', authRoute);
 route.use('/api', userRoute);
 route.use('/api/admin', adminRoute);
 route.use('/api/songs', songRoute);
-route.use('/api/stat', statRoute);
+route.use('/api', statRoute);

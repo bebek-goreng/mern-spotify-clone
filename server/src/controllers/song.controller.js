@@ -4,7 +4,7 @@ export const getAllSongsController = async (req, res, next) => {
     try {
         const params = {
             createdAt: -1
-        }
+        };
 
         const songs = await getAllSongs(params);
 
