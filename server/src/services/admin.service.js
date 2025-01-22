@@ -35,17 +35,15 @@ export const createSong = async (params) => {
 }
 
 export const deleteSong = async (params) => {
-    const { id } = params;
-
-    const song = await Song.findById(id);
+    const song = await Song.findById(params);
 
     if (song.albumId) {
-        await Album.findByIdAndUpdate({
+        await Album.findByIdAndUpdate(song.albumId, {
             $pull: { songs: song._id }
         });
     }
 
-    await Song.findByIdAndDelete(id);
+    await Song.findByIdAndDelete(params);
 
     return;
 }
