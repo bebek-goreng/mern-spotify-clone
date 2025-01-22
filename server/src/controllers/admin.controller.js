@@ -22,7 +22,7 @@ export const createSongController = async (req, res, next) => {
 
 export const deleteSongController = async (req, res, next) => {
     try {
-        const id = req.params;
+        const id = req.params.id;
 
         const result = await deleteSong(id);
 

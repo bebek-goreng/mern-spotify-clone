@@ -4,7 +4,7 @@ import { AppError } from '../utils/app.error.js';
 export const protectedRoute = async (req, res, next) => {
     try {
         if (!req.auth.userId) {
-            // throw new AppError('Unauthorized - you must login first', 401);
+            console.log("Protected route error - no user id");
         }
 
         next();

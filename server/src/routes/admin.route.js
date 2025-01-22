@@ -8,6 +8,6 @@ export const adminRoute = express.Router();
 adminRoute.use(protectedRoute, requireAdmin);
 adminRoute.get('/check', checkAdmin);
 adminRoute.post('/songs/create', createSongController);
-adminRoute.post('/songs/delete/:id', deleteSongController);
+adminRoute.delete('/songs/delete/:id', deleteSongController);
 adminRoute.post('/album/create', createAlbumController);
 adminRoute.delete('/album/delete/:id', createAlbumController);
