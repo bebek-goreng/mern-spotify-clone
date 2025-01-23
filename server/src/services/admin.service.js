@@ -24,6 +24,8 @@ export const createSong = async (params) => {
         albumId: albumId || null
     });
 
+    await song.save(); 
+
     if (albumId) {
         await Album.findByIdAndUpdate(albumId, {
             $push: { songs: song._id }

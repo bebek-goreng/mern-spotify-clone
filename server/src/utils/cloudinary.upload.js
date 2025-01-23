@@ -9,7 +9,7 @@ export const uploadToCloudinary = async (file) => {
 
         return result.secure_url;
     } catch (error) {
-        console.log(`error to upload file in cloudinary: ${error}`);
+        console.log(error);
         throw new AppError('Internal server error - error to upload file in cloudinary', 500);
     }
 }
