@@ -4,7 +4,7 @@ export const createSongController = async (req, res, next) => {
     try {
         const params = {
             requestFile: req.files,
-            audioFile: req.files.audioFile,
+            audioFile: req.files.audio,
             imageFile: req.files.imageFile,
             data: { ...req.body }
         }
