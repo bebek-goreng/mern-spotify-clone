@@ -24,7 +24,7 @@ export const createSong = async (params) => {
         albumId: albumId || null
     });
 
-    await song.save(); 
+    await song.save();
 
     if (albumId) {
         await Album.findByIdAndUpdate(albumId, {
@@ -78,14 +78,12 @@ export const createAlbum = async (params) => {
 }
 
 export const deleteAlbum = async (params) => {
-    const { id } = params;
-
-    if (!id) {
+    if (!params) {
         throw new AppError('ID album required', 400);
     }
 
-    await Song.deleteMany({ albumId: id });
-    await Album.findByIdAndDelete(id);
+    await Song.deleteMany({ albumId: params });
+    await Album.findByIdAndDelete(params);
 
     return;
 }
