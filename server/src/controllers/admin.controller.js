@@ -54,7 +54,7 @@ export const createAlbumController = async (req, res, next) => {
 
 export const deleteAlbumController = async (req, res, next) => {
     try {
-        const id = req.params;
+        const id = req.params.id;
 
         await deleteAlbum(id);
 
