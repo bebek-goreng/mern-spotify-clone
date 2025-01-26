@@ -54,7 +54,7 @@ export const createAlbum = async (params) => {
     const { data, imageFile } = params;
     const { title, artist, releaseYear } = data;
 
-    const existingAlbum = await Album.find({
+    const existingAlbum = await Album.findOne({
         title,
         artist
     });
