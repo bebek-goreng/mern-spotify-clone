@@ -38,7 +38,7 @@ export const createAlbumController = async (req, res, next) => {
     try {
         const params = {
             data: { ...req.body },
-            imageFile: req.files
+            imageFile: req.files.imageFile
         }
 
         const album = await createAlbum(params);
