@@ -7,6 +7,8 @@ import path from 'path';
 import { connectionDB } from './db/db.js';
 import { route } from './routes/main.route.js';
 import { errorHandler } from './middlewares/error.handler.js';
+import { createServer } from 'http';
+import { initializeSocket } from './utils/socket.js';
 
 dotenv.config();
 const __dirname = path.resolve();
@@ -14,6 +16,9 @@ const __dirname = path.resolve();
 const app = express();
 
 const port = process.env.PORT || 8080;
+
+const httpServer = createServer(app);
+initializeSocket(httpServer);
 
 app.use(cors(
     {
@@ -37,7 +42,7 @@ app.use(fileUpload({
 app.use(route);
 app.use(errorHandler);
 
-app.listen(port, () => {
+httpServer.listen(port, () => {
     console.log(`server running on port: ${port}`);
     connectionDB();
 });
