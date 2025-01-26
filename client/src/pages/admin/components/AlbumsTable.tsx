@@ -1,4 +1,13 @@
-import { Button } from "@/components/ui/button";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import {
   Table,
   TableBody,
@@ -17,8 +26,6 @@ const AlbumsTable = () => {
   useEffect(() => {
     fetchAlbums();
   }, [fetchAlbums]);
-
-  console.log("<<<<<<<< ALBUMS", albums);
 
   return (
     <Table>
@@ -58,13 +65,49 @@ const AlbumsTable = () => {
             </TableCell>
             <TableCell className="text-right">
               <div className="flex gap-2 justify-end">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => deleteAlbum(album._id)}
-                  className="text-red-400 hover:text-red-300 hover:bg-red-400/10">
-                  <Trash2 className="h-4 w-4" />
-                </Button>
+                <AlertDialog>
+                  <AlertDialogTrigger>
+                    <Trash2 className="h-4 w-4" color="#F87171" />
+                  </AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>
+                        Are you absolutely sure you want to delete this album?
+                      </AlertDialogTitle>
+                    </AlertDialogHeader>
+                    <div className="flex items-center gap-6 mt-4">
+                      <div>
+                        <img
+                          src={album.imageUrl}
+                          alt={album.title}
+                          className="size-20 rounded object-cover"
+                        />
+                      </div>
+                      <div className="flex flex-col text-white gap-2">
+                        <h3 className="mb-1">
+                          <span className="font-bold text-xs">Artist:</span>{" "}
+                          {album.artist}
+                        </h3>
+                        <h3>
+                          <span className="font-bold text-xs">Title:</span>{" "}
+                          {album.title}
+                        </h3>
+                        <h3>
+                          <span className="font-bold text-xs">
+                            Release Date:
+                          </span>
+                          <span> {album.releaseYear}</span>
+                        </h3>
+                      </div>
+                    </div>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel>Cancel</AlertDialogCancel>
+                      <AlertDialogAction onClick={() => deleteAlbum(album._id)}>
+                        Delete
+                      </AlertDialogAction>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
               </div>
             </TableCell>
           </TableRow>
