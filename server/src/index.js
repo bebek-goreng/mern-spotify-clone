@@ -8,7 +8,7 @@ import { connectionDB } from './db/db.js';
 import { route } from './routes/main.route.js';
 import { errorHandler } from './middlewares/error.handler.js';
 import { createServer } from 'http';
-import { initializeSocket } from './utils/socket.js';
+import { initializeSocket } from './lib/socket.js'; 
 
 dotenv.config();
 const __dirname = path.resolve();

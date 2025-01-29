@@ -19,7 +19,7 @@ export const messagesController = async (req, res, next) => {
     try {
         const params = {
             myId: req.auth.userId,
-            userId: req.params
+            userId: req.params.userId
         };
 
         const messages = await getMessage(params);
